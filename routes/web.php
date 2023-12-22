@@ -20,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/books', [BookController::class, 'getBooks']);
-Route::get('/book/{book:slug}', [BookController::class, 'getBook']);
+Route::get('/book/{book}', [BookController::class, 'getBook']);
 Route::get('/categories', [CategoryController::class, 'getCategories']);
+Route::get('/categories/{category}/books', [CategoryController::class, 'getCategory']);

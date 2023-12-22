@@ -5,7 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
-use app\Models\Category;
+use App\Models\Category;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +15,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(10)->create([
+            'name' => 'Test User',
+            // 'email' => 'test@example.com',
+        ]);
 
-        Book::insert([]);
+        Book::factory(10)->create();
+
+        Category::factory()->create([
+            'category' => 'Novel'
+        ]);
+        Category::factory()->create([
+            'category' => 'Fiksi'
+        ]);
+        Category::factory()->create([
+            'category' => 'Non Fiksi'
+        ]);
+        Category::factory()->create([
+            'category' => 'Komik'
+        ]);
     }
 }

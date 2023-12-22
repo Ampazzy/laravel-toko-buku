@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('category');
             $table->index('category');
-            $table->string('slug');
             $table->timestamps();
         });
     }
