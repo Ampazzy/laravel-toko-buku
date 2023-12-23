@@ -10,7 +10,7 @@ class BookController extends Controller
 {
     public function getBooks()
     {
-        $books = Book::all();
+        $books = Book::with('category')->paginate(12);
         return view('books', ["books" => $books]);
     }
 

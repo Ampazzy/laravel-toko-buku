@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function getCategory(Category $category)
     {
-        return view('category', ["category" => $category]);
+        $categories = $category->load('book');
+        return view('category', ["category" => $categories]);
     }
 }

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // 'email' => 'test@example.com',
         ]);
 
-        Book::factory(10)->create();
+        Book::factory(1000)->create();
 
         Category::factory()->create([
             'category' => 'Novel'

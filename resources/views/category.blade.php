@@ -10,7 +10,7 @@
                         alt="{{ $listCategory->image }}">
                     <div class="card-body">
                         <h3 class="card-title">{{ $listCategory->title }}</h3>
-                        <h5 class="card-text">{{ $listCategory->category->category }}</h5>
+                        <h5 class="card-text">{{ $category->category }}</h5>
                         <p class="card-text">{{ $listCategory->description }}</p>
                     </div>
                     <div class="card-footer">
