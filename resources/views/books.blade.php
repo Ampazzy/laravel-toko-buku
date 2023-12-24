@@ -1,11 +1,13 @@
 @extends('Properties.main')
 
 @section('body')
-    <div class="input-group mb-3 mt-5 mx-auto" style="width: 40%">
-        <input type="text" class="form-control" placeholder="Cari di sini.." aria-label="Recipient's username"
-            aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-    </div>
+    <form action="/books" method="GET">
+        <div class="input-group mb-3 mt-5 mx-auto" style="width: 40%">
+            <input type="text" class="form-control" placeholder="Cari di sini.." name="search"
+                value="{{ request('search') }}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
     <div class="row row-cols-md-3 g-5 mt-3">
         @foreach ($books as $book)
             <div class="col">
