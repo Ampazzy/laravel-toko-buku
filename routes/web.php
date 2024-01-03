@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/books', [BookController::class, 'getBooks']);
-Route::get('/book/{book}', [BookController::class, 'getBook']);
-Route::get('/categories', [CategoryController::class, 'getCategories']);
-Route::get('/categories/{category}/books', [CategoryController::class, 'getCategory']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/books', [BookController::class, 'getBooks']);
+    Route::get('/book/{book}', [BookController::class, 'getBook']);
+    Route::get('/categories', [CategoryController::class, 'getCategories']);
+    Route::get('/categories/{category}/books', [CategoryController::class, 'getCategory']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+});

@@ -5,15 +5,21 @@
                 class="d-inline-block align-text-top">
             Yuk kita literasi
         </a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/books">Daftar Buku</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/categories">Kategori</a>
-                </li>
-            </ul>
-        </div>
+        @auth
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/books">Daftar Buku</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/categories">Kategori</a>
+                    </li>
+                </ul>
+            </div>
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit" class="dropdown-item">Logout</button>
+            </form>
+        @endauth
     </div>
 </nav>
