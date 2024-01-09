@@ -21,14 +21,20 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/books', [BookController::class, 'getBooks']);
-    Route::get('/book/{book}', [BookController::class, 'getBook']);
-    Route::get('/categories', [CategoryController::class, 'getCategories']);
-    Route::get('/categories/{category}/books', [CategoryController::class, 'getCategory']);
-    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('books', [BookController::class, 'getBooks']);
+    Route::get('books/{book}', [BookController::class, 'getBook']);
+    Route::get('categories', [CategoryController::class, 'getCategories']);
+    Route::get('categories/{category}/books', [CategoryController::class, 'getCategory']);
+    Route::post('logout', [LoginController::class, 'logout']);
 });
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::get('login', [LoginController::class, 'login'])->name('login');
+    Route::post('login', [LoginController::class, 'authenticate']);
 });
+
+Route::get('admin/books', [BookController::class, 'adminGetBooks']);
+Route::get('admin/books/create', [BookController::class, 'adminCreateBook']);
+Route::post('admin/books/store', [BookController::class, 'adminStoreBook']);
+Route::get('admin/books/{book}', [BookController::class, 'adminGetBook']);
+Route::delete('admin/books/{book}', [BookController::class, 'adminDeleteBook']);

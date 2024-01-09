@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory(10)->create([
+        User::factory(5)->create([
             // 'name' => 'Test User',
             // 'email' => 'test@example.com',
         ]);
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        Book::factory(1000)->create();
+        Book::factory(10)->create();
 
         Category::factory()->create([
             'category' => 'Novel'
