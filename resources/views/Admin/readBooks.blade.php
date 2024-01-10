@@ -30,7 +30,7 @@
                         <td>{{ $book->category->category }}</td>
                         <td>
                             <a href="/admin/books/{{ $book->id }}">Detail</a>
-                            <a href="/admin/books/edit/{{ $book->id }}">Edit</a>
+                            <a href="/admin/books/{{ $book->id }}/edit">Edit</a>
                             @method('DELETE')
                             <input type="submit" value="Delete">
                         </td>

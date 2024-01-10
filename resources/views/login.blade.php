@@ -12,5 +12,6 @@
             <input type="text" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         <button type="submit">Login</button>
+        <a href="/register" class="btn btn-info">Register</a>
     </form>
 @endsection

@@ -73,11 +73,46 @@ class BookController extends Controller
         return redirect('/admin/books');
     }
 
+    public function adminEditBook(Book $book)
+    {
+        return view('Admin.editBook', ["book" => $book]);
+    }
+
+    public function adminUpdateBook(Request $request, Book $book)
+    {
+        $request->validate([
+            'category' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'image',
+        ]);
+
+        if ($request->file('image') == null) {
+            $book->update([
+                'category_id' => $request->category,
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
+        } else {
+            $image = $request->file('image');
+            $image->storeAs('public/book', $image->hashName());
+            Storage::delete('public/book/' . $book->image);
+
+            $book->update([
+                'category_id' => $request->category,
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $image->hashName(),
+            ]);
+        }
+
+        return redirect('/admin/books');
+    }
+
     public function adminDeleteBook(Book $book)
     {
-        // @dd('book/' . $book->image);
-        // $book->delete();
-        Storage::delete('book/' . $book->image);
+        $book->delete();
+        Storage::delete('public/book/' . $book->image);
         return back();
     }
 }
